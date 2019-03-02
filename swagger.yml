@@ -1,0 +1,117 @@
+swagger: "2.0"
+info:
+  description: "Rock Paper Scissors game"
+  version: "1.0.0"
+  title: "Rock Paper Scissors"
+  contact:
+    email: "dorinel.utiu@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+basePath: "/rock-paper-scissors"
+tags:
+- name: "game"
+  description: "Game"
+  externalDocs:
+    description: "Find out more"
+    url: "https://en.wikipedia.org/wiki/Rock-paper-scissors"
+schemes:
+- "https"
+- "http"
+paths:
+  /user-option/{id}/{value}:
+    post:
+      tags:
+      - "game"
+      summary: "Store user option"
+      description: ""
+      operationId: "option"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "id"
+        type: "string"
+        description: "User unique game session"
+        required: true
+      - in: "path"
+        name: "value"
+        type: "string"
+        description: "User chosen value (rock, paper, scissors)"
+        required: true
+      responses:
+        200:
+          description: "Option saved"
+        400:
+          description: "value not permitted"
+        404:
+          description: "Id not found"
+  /game-restart/{id}:
+    post:
+      tags:
+      - "game"
+      summary: "Restarts game"
+      description: ""
+      operationId: "restartGame"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "id"
+        type: "string"
+        description: "User unique game session"
+        required: true
+      responses:
+        200:
+          description: "Game restarted"
+        404:
+          description: "Id not found"
+  /game-status/{id}:
+    get:
+      tags:
+      - "game"
+      summary: "Return game status"
+      description: ""
+      operationId: "gameStatus"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "id"
+        type: "string"
+        description: "User unique game session"
+        required: true
+      responses:
+        200:
+          description: "Game status"
+          schema:
+            $ref: '#/definitions/Game'
+        404:
+          description: "Id not found"
+
+
+definitions:
+  Game:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      rounds:
+        type: "array"
+        items:
+          $ref: "#/definitions/Round"
+  Round:
+    type: "object"
+    properties:
+      user1Choosing:
+        type: "string"
+      user2Choosing:
+        type: "string"
+      roundStatus:
+        type: "string"
