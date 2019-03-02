@@ -1,0 +1,4 @@
+app.port: 8001
+app.host: localhost
+app.url: http://${app.host}:${app.port}/rock-paper-scissors
+app.health: ${app.url}/actuator/health
