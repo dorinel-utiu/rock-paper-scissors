@@ -48,5 +48,10 @@ public class RockPaperScissorsService {
         return game;
     }
 
+    public Game getGameStatus(String gameId) {
+        Game game = validateAndReturnIfGameExists(gameId);
+        return gameRepository.getGame(game.getId());
+    }
+
 
 }

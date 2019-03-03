@@ -4,7 +4,7 @@ Feature: Game status
   Scenario: User sees game status successfully
     Given The application is up and running
     And The game with 'gameSId' is started
-    When User calls game status for game 'id'
+    When User calls game status for game 'gameSId'
     Then Game status with status code '204' should be returned
 
   Scenario: User sees game status successfully
