@@ -70,28 +70,6 @@ paths:
           description: "value not permitted"
         404:
           description: "Id not found"
-  /game-restart/{id}:
-    post:
-      tags:
-      - "game"
-      summary: "Restarts game"
-      description: ""
-      operationId: "restartGame"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "path"
-        name: "id"
-        type: "string"
-        description: "User unique game session"
-        required: true
-      responses:
-        200:
-          description: "Game restarted"
-        404:
-          description: "Id not found"
   /game-status/{id}:
     get:
       tags:
