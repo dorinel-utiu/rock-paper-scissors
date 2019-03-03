@@ -92,6 +92,8 @@ paths:
           description: "Game status"
           schema:
             $ref: '#/definitions/Game'
+        204:
+          description: "No Content"
         404:
           description: "Id not found"
 
