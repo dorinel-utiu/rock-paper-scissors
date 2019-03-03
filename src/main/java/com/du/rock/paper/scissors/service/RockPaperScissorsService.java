@@ -31,18 +31,21 @@ public class RockPaperScissorsService {
     }
 
     public void userOption(String gameId, String option) {
-        validateGameExists(gameId);
+        Game game = validateAndReturnIfGameExists(gameId);
 
         RockPaperScissorsType player1Option = RockPaperScissorsType.getRockPaperScissors(option);
-        Round round = new Round(player1Option, PLAYER_2_OPTION);
 
-        gameRepository.getGame(gameId).addRound(round);
+        Round round = new Round(player1Option, PLAYER_2_OPTION);
+        game.addRound(round);
+        gameRepository.updateGame(game);
     }
 
-    private void validateGameExists(String gameId) {
-        if (gameRepository.getGame(gameId) == null) {
+    private Game validateAndReturnIfGameExists(String gameId) {
+        Game game = gameRepository.getGame(gameId);
+        if (game == null) {
             throw new GameNotFoundException("Game with " + gameId + " does not exist");
         }
+        return game;
     }
 
 

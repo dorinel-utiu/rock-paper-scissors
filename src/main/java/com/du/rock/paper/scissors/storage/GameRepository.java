@@ -22,4 +22,8 @@ public class GameRepository {
     public Game getGame(String id) {
         return gameStorage.get(id);
     }
+
+    public void updateGame(Game game) {
+        gameStorage.put(game.getId(), game);
+    }
 }
