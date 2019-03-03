@@ -1,6 +1,5 @@
 package du.rock.paper.scissors.steps;
 
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
@@ -11,23 +10,20 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class GameStartSteps {
+public class UserOptionSteps {
 
-    @Value("${app.url}/game-start")
-    private String gameStartUrl;
+    @Value("${app.url}/user-option")
+    private String userOptionUrl;
 
     private Response response;
 
-    @When("^An '(.+)' is given to start the game$")
-    @And("^The game with '(.+)' is started$")
-    public void callGameStart(String gameId) {
-        response = given().when().post(gameStartUrl + "/" + gameId).then().extract().response();
+    @When("^User selects '(.+)' as option for game '(.+)'$")
+    public void userOption(String option, String gameId) {
+        response = given().when().post(userOptionUrl + "/" + gameId + "/" + option).then().extract().response();
     }
 
-    @Then("^A '(.+)' status code should be returned$")
-    public void checkGameStartStatusCode(int statusCode) {
+    @Then("^A '(.+)' response status code should be returned$")
+    public void selectOptionStatusCode(int statusCode) {
         assertThat(response.statusCode(), is(equalTo(statusCode)));
     }
-
-
 }
