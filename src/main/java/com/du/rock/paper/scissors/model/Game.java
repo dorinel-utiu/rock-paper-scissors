@@ -20,4 +20,8 @@ public class Game {
         this.id = id;
         rounds = new ArrayList<>();
     }
+
+    public void addRound(Round round) {
+        rounds.add(round);
+    }
 }
