@@ -4,7 +4,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -16,14 +15,16 @@ public class GameStartSteps {
     @Value("${app.url}/game-start")
     private String gameStartUrl;
 
-    @When("^An id is given to start the game$")
-    public Response callGameStart() {
-        return given().when().get(gameStartUrl+"/gameId").then().extract().response();
+    private Response response;
+
+    @When("^An '(.+)' is given to start the game$")
+    public void callGameStart(String gameId) {
+        response = given().when().post(gameStartUrl + "/" + gameId).then().extract().response();
     }
 
-    @Then("^A 201 status code should be returned$")
-    public void checkGameStartStatusCode() {
-        assertThat(callGameStart().statusCode(), is(equalTo(HttpStatus.CREATED.value())));
+    @Then("^A '(.+)' status code should be returned$")
+    public void checkGameStartStatusCode(int statusCode) {
+        assertThat(response.statusCode(), is(equalTo(statusCode)));
     }
 
 
