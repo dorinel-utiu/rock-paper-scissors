@@ -6,7 +6,8 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         RockPaperScissorsServiceCreateGameTest.class,
-        RockPaperScissorsServiceUserOptionTest.class
+        RockPaperScissorsServiceUserOptionTest.class,
+        RockPaperScissorsServiceGameStatusTest.class
 })
 public class RockPaperScissorsServiceTest {
 }
