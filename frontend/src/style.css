@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(to right, #4776e6, #8e54e9);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+h1 {
+    text-align: center;
+    color: rgba(255,255,255,0.8);
+    font-size: 4rem;
+}
+
+h5 {
+    text-align: center;
+    color: rgba(255,255,255,0.8);
+    font-size: 1rem;
+}
+
+.button {
+    background: rgba(255,255,255,0.3);
+    font-size: 3rem;
+    min-width: 100px;
+    min-height: 100px;
+    color:  rgba(255,255,255,0.8);
+    border: solid 4px rgba(255,255,255,0.8);
+    border-radius: 10px;
+    transition: 200ms;
+    justify-content: flex-end;
+    position: absolute;
+    align-items: center;
+    margin: -20px -50px;
+    top:30%;
+    left:45%;
+}
+
+.option {
+    background: rgba(255,255,255,0.3);
+    font-size: 1rem;
+    min-width: 10px;
+    min-height: 10px;
+    color:  rgba(255,255,255,0.8);
+    border: solid 2px rgba(255,255,255,0.8);
+    border-radius: 10px;
+    transition: 200ms;
+    align-items: center;
+    position: center;
+    justify-content: center;
+}
+
+button:hover {
+    background: rgba(255,255,255,0.6);
+}
+
+button:active {
+    background: rgba(0,0,0,0.4);
+}
+
+.main {
+    align-content: center;
+}
+.container {
+    width: 60%;
+    height: 130px;
+    padding: 200px;
+
+}
+.player1 {
+    width: 200px;
+    float:left;
+    height:200px;
+    margin:20px;
+    align-content: center;
+}
+.player2 {
+    width: 200px;
+    float:right;
+    height:200px;
+    margin:20px;
+    align-content: center;
+}
