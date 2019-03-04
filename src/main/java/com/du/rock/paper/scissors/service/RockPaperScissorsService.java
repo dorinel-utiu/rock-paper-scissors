@@ -3,6 +3,7 @@ package com.du.rock.paper.scissors.service;
 import com.du.rock.paper.scissors.exception.GameAlreadyExistsException;
 import com.du.rock.paper.scissors.exception.GameNotFoundException;
 import com.du.rock.paper.scissors.model.Game;
+import com.du.rock.paper.scissors.model.OverAllGameStatus;
 import com.du.rock.paper.scissors.model.RockPaperScissorsType;
 import com.du.rock.paper.scissors.model.Round;
 import com.du.rock.paper.scissors.storage.GameRepository;
@@ -51,6 +52,10 @@ public class RockPaperScissorsService {
     public Game getGameStatus(String gameId) {
         Game game = validateAndReturnIfGameExists(gameId);
         return gameRepository.getGame(game.getId());
+    }
+
+    public OverAllGameStatus getOverAllGameStatus() {
+        return gameRepository.getGameOverAllStatus();
     }
 
 

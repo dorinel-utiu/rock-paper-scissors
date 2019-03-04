@@ -62,6 +62,13 @@ button:active {
 .main {
     align-content: center;
 }
+
+.main2 {
+    align-content: center;
+    width: 60%;
+    height: 130px;
+    padding: 200px;
+}
 .container {
     width: 60%;
     height: 130px;

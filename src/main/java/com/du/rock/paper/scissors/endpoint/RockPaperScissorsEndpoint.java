@@ -1,6 +1,7 @@
 package com.du.rock.paper.scissors.endpoint;
 
 import com.du.rock.paper.scissors.model.Game;
+import com.du.rock.paper.scissors.model.OverAllGameStatus;
 import com.du.rock.paper.scissors.service.RockPaperScissorsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,6 +38,12 @@ public class RockPaperScissorsEndpoint {
            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(game, HttpStatus.OK);
+    }
+
+    @GetMapping("/overall-game-status")
+    public ResponseEntity<OverAllGameStatus> overAllGameStatus() {
+        OverAllGameStatus allGameStatus = service.getOverAllGameStatus();
+        return new ResponseEntity<>(allGameStatus, HttpStatus.OK);
     }
 
 }
